@@ -24,20 +24,21 @@ function createTree(element, data) {
   if (
     !(element instanceof Element) ||
     typeof data !== 'object' ||
-    data === null
+    data === null ||
+    Array.isArray(data)
   ) {
     return;
   }
 
   const keys = Object.keys(data);
 
-  if (keys.length === 0) {
-    return;
-  }
+  // if (keys.length === 0) {
+  //   return;
+  // }
 
   const ul = document.createElement('ul');
 
-  for (const key in data) {
+  for (const key of keys) {
     const li = document.createElement('li');
 
     li.textContent = key;
